@@ -1,12 +1,6 @@
 #include <stdarg.h>
 #include <stdio.h>
 
-#define NDEBUG
-
-#ifdef NDEBUG
-#define NO_DEBUG_OUTPUT
-#endif
-
 /* Use this function to output messages when something unexpected
    happens (which might be an indication of an error). *Don't* use it
    when there's internal errors in the code - these should be handled
@@ -14,7 +8,7 @@
 void
 tgl_warning(const char *format, ...)
 {
-#ifndef NO_DEBUG_OUTPUT
+#if CONFIG_TGL_FEATURE_DEBUG
   va_list args;
   va_start(args, format);
   fprintf(stderr, "*WARNING* ");
@@ -27,7 +21,7 @@ tgl_warning(const char *format, ...)
 void
 tgl_trace(const char *format, ...)
 {
-#ifndef NO_DEBUG_OUTPUT
+#if CONFIG_TGL_FEATURE_DEBUG
   va_list args;
   va_start(args, format);
   fprintf(stderr, "*DEBUG* ");
@@ -42,7 +36,7 @@ tgl_trace(const char *format, ...)
 void
 tgl_fixme(const char *format, ...)
 {
-#ifndef NO_DEBUG_OUTPUT
+#if CONFIG_TGL_FEATURE_DEBUG
   va_list args;
   va_start(args, format);
   fprintf(stderr, "*FIXME* ");

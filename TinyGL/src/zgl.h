@@ -9,10 +9,7 @@
 #include <GL/gl.h>
 #include "zbuffer.h"
 #include "zmath.h"
-#include "zfeatures.h"
 
-#define DEBUG
-/* #define NDEBUG */
 
 enum {
 
@@ -335,7 +332,7 @@ void dprintf(const char *, ...);
 
 #else /* !BEOS */
 
-#ifdef DEBUG
+#ifdef CONFIG_TGL_FEATURE_DEBUG
 
 #define dprintf(format, args...)  \
   fprintf(stderr,"In '%s': " format "\n",__FUNCTION__, ##args);

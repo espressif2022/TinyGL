@@ -2,7 +2,7 @@
     int n, dx, dy, sx, pp_inc_1, pp_inc_2;
     register int a;
     register PIXEL *pp;
-#if defined(INTERP_RGB) || TGL_FEATURE_RENDER_BITS == 24
+#if defined(INTERP_RGB) || CONFIG_TGL_FEATURE_RENDER_BITS_24
     register unsigned int r, g, b;
 #endif
 #ifdef INTERP_RGB
@@ -33,7 +33,7 @@
     r = p2->r << 8;
     g = p2->g << 8;
     b = p2->b << 8;
-#elif TGL_FEATURE_RENDER_BITS == 24
+#elif CONFIG_TGL_FEATURE_RENDER_BITS_24
     /* for 24 bits, we store the colors in different variables */
     r = p2->r >> 8;
     g = p2->g >> 8;
@@ -42,14 +42,14 @@
 
 #ifdef INTERP_RGB
 #define RGB(x) x
-#if TGL_FEATURE_RENDER_BITS == 24
+#if CONFIG_TGL_FEATURE_RENDER_BITS_24
 #define RGBPIXEL pp[0] = r >> 16, pp[1] = g >> 16, pp[2] = b >> 16
 #else
 #define RGBPIXEL *pp = RGB_TO_PIXEL(r >> 8,g >> 8,b >> 8)
 #endif
 #else /* INTERP_RGB */
 #define RGB(x)
-#if TGL_FEATURE_RENDER_BITS == 24
+#if CONFIG_TGL_FEATURE_RENDER_BITS_24
 #define RGBPIXEL pp[0] = r, pp[1] = g, pp[2] = b
 #else
 #define RGBPIXEL *pp = color

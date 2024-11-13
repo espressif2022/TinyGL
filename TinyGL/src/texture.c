@@ -158,17 +158,17 @@ void glopTexImage2D(GLContext *c,GLParam *p)
   im->xsize=width;
   im->ysize=height;
   if (im->pixmap!=NULL) gl_free(im->pixmap);
-#if TGL_FEATURE_RENDER_BITS == 24 
+#if CONFIG_TGL_FEATURE_RENDER_BITS_24 
   im->pixmap=gl_malloc(width*height*3);
   if(im->pixmap) {
       memcpy(im->pixmap,pixels1,width*height*3);
   }
-#elif TGL_FEATURE_RENDER_BITS == 32
+#elif CONFIG_TGL_FEATURE_RENDER_BITS_32
   im->pixmap=gl_malloc(width*height*4);
   if(im->pixmap) {
       gl_convertRGB_to_8A8R8G8B(im->pixmap,pixels1,width,height);
   }
-#elif TGL_FEATURE_RENDER_BITS == 16
+#elif CONFIG_TGL_FEATURE_RENDER_BITS_16
   im->pixmap=gl_malloc(width*height*2);
   if(im->pixmap) {
       gl_convertRGB_to_5R6G5B(im->pixmap,pixels1,width,height);

@@ -8,10 +8,10 @@
 #include "zbuffer.h"
 #include <assert.h>
 
-#if defined(TGL_FEATURE_8_BITS)
+#if defined(CONFIG_TGL_FEATURE_8_BITS)
 
-#if TGL_FEATURE_RENDER_BITS != 16
-#error TGL_FEATURE_8_BITS is not supported for this value of TGL_FEATURE_RENDER_BITS
+#if CONFIG_TGL_FEATURE_RENDER_BITS != 16
+#error CONFIG_TGL_FEATURE_8_BITS is not supported for this value of CONFIG_TGL_FEATURE_RENDER_BITS
 #endif
 
 #define _R	5
@@ -160,4 +160,4 @@ void ZB_ditherFrameBuffer(ZBuffer *zb,unsigned char *buf,
   }
 }
 
-#endif /* TGL_FEATURE_8_BITS */
+#endif /* CONFIG_TGL_FEATURE_8_BITS */

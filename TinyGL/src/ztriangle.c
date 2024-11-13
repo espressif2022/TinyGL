@@ -6,7 +6,7 @@
 void ZB_fillTriangleFlat(ZBuffer *zb,
 			 ZBufferPoint *p0,ZBufferPoint *p1,ZBufferPoint *p2)
 {
-#if TGL_FEATURE_RENDER_BITS == 24
+#if CONFIG_TGL_FEATURE_RENDER_BITS_24
     unsigned char colorR, colorG, colorB;
 #else
     int color;
@@ -14,7 +14,7 @@ void ZB_fillTriangleFlat(ZBuffer *zb,
 
 #define INTERP_Z
 
-#if TGL_FEATURE_RENDER_BITS == 24 
+#if CONFIG_TGL_FEATURE_RENDER_BITS_24 
 
 #define DRAW_INIT()				\
 {						\
@@ -51,7 +51,7 @@ void ZB_fillTriangleFlat(ZBuffer *zb,
     }						\
     z+=dzdx;					\
 }
-#endif /* TGL_FEATURE_RENDER_BITS == 24 */
+#endif /* CONFIG_TGL_FEATURE_RENDER_BITS_24 */
 
 #include "ztriangle.h"
 }
@@ -64,7 +64,7 @@ void ZB_fillTriangleFlat(ZBuffer *zb,
 void ZB_fillTriangleSmooth(ZBuffer *zb,
 			   ZBufferPoint *p0,ZBufferPoint *p1,ZBufferPoint *p2)
 {
-#if TGL_FEATURE_RENDER_BITS == 16
+#if CONFIG_TGL_FEATURE_RENDER_BITS_16
         int _drgbdx;
 #endif
 
@@ -73,7 +73,7 @@ void ZB_fillTriangleSmooth(ZBuffer *zb,
 
 #define SAR_RND_TO_ZERO(v,n) (v / (1<<n))
 
-#if TGL_FEATURE_RENDER_BITS == 24
+#if CONFIG_TGL_FEATURE_RENDER_BITS_24
 
 #define DRAW_INIT() 				\
 {						\
@@ -94,7 +94,7 @@ void ZB_fillTriangleSmooth(ZBuffer *zb,
     ob1+=dbdx;					\
 }
 
-#elif TGL_FEATURE_RENDER_BITS == 16
+#elif CONFIG_TGL_FEATURE_RENDER_BITS_16
 
 #define DRAW_INIT() 				\
 {						\
@@ -166,7 +166,7 @@ void ZB_fillTriangleSmooth(ZBuffer *zb,
     ob1+=dbdx;					\
 }
 
-#endif /* TGL_FEATURE_RENDER_BITS */
+#endif /* CONFIG_TGL_FEATURE_RENDER_BITS */
 
 #include "ztriangle.h"
 }
@@ -189,7 +189,7 @@ void ZB_fillTriangleMapping(ZBuffer *zb,
   texture=zb->current_texture;			\
 }
 
-#if TGL_FEATURE_RENDER_BITS == 24
+#if CONFIG_TGL_FEATURE_RENDER_BITS_24
 
 #define PUT_PIXEL(_a)				\
 {						\
@@ -254,7 +254,7 @@ void ZB_fillTriangleMappingPerspective(ZBuffer *zb,
 }
 
 
-#if TGL_FEATURE_RENDER_BITS == 24
+#if CONFIG_TGL_FEATURE_RENDER_BITS_24
 
 #define PUT_PIXEL(_a)				\
 {						\
