@@ -1,4 +1,4 @@
-idf_component_register(SRC_DIRS TinyGL INCLUDE_DIRS TinyGL)
+idf_component_register(SRC_DIRS TinyGL/src INCLUDE_DIRS TinyGL/src)
 
 target_compile_options(${COMPONENT_LIB} PRIVATE -Wno-maybe-uninitialized)
 
