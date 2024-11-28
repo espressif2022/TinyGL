@@ -23,6 +23,10 @@ void endSharedState(GLContext *c)
   }
   gl_free(s->lists);
 
+  GLTexture **ht = &s->texture_hash_table[0 % TEXTURE_HASH_TABLE_SIZE];
+
+  gl_free(*ht);
+
   gl_free(s->texture_hash_table);
 }
 
@@ -185,5 +189,11 @@ void glClose(void)
 {
   GLContext *c=gl_get_context();
   endSharedState(c);
+
+  gl_free(c->vertex);
+
+  for(int i= 0; i< 3; i++) {
+    gl_free(c->matrix_stack_ptr[i]);
+  }
   gl_free(c);
 }
